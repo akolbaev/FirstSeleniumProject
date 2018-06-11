@@ -50,7 +50,7 @@ public class SeleniumGitProject_Order {
 			int x = randZip.nextInt(10000);
 			zip += x;
 		}
-		System.out.println(zip);
+		// System.out.println(zip);
 		driver.findElement(By.name("ctl00$MainContent$fmwOrder$TextBox5")).sendKeys(String.valueOf(zip));
 		// .linkText("Process.aspx")).click();
 		// webDriver.findElement(By.xpath("//a[@href='/docs/configuration']")).click();
@@ -63,40 +63,52 @@ public class SeleniumGitProject_Order {
 
 		long randV = (long) (Math.random() * 10000000000000L);
 		long visa = 4000000000000000L + randV;
+		long master = 5000000000000000L + randV;
+		long amex = 3000000000000000L + randV;
 
-		long randM = (long) (Math.random() * 10000000000000L);
-		long master = 5000000000000000L + randM;
-
-		long randA = (long) (Math.random() * 10000000000000L);
-		long amex = 3000000000000000L + randA;
-
-		if (index == 1) {
+		// if (index == 1) {
+		// driver.findElement(By.name("ctl00$MainContent$fmwOrder$TextBox6")).sendKeys(String.valueOf(visa));
+		//
+		// } else if (index == 2) {
+		// driver.findElement(By.name("ctl00$MainContent$fmwOrder$TextBox6")).sendKeys(String.valueOf(master));
+		//
+		// } else {
+		// driver.findElement(By.name("ctl00$MainContent$fmwOrder$TextBox6")).sendKeys(String.valueOf(amex));
+		//
+		// }
+		switch (index) {
+		case 1:
 			driver.findElement(By.name("ctl00$MainContent$fmwOrder$TextBox6")).sendKeys(String.valueOf(visa));
-
-		} else if (index == 2) {
+			break;
+		case 2:
 			driver.findElement(By.name("ctl00$MainContent$fmwOrder$TextBox6")).sendKeys(String.valueOf(master));
-
-		} else {
+			break;
+		case 3:
 			driver.findElement(By.name("ctl00$MainContent$fmwOrder$TextBox6")).sendKeys(String.valueOf(amex));
-
+			break;
+		default:
+			System.out.println("urcodeisintrouble");
+			break;
 		}
+
+		System.out.println(visa);
+		System.out.println(master);
+		System.out.println(amex);
+
 		driver.findElement(By.name("ctl00$MainContent$fmwOrder$TextBox1")).sendKeys("02/19");
+		// Thread.sleep(5000);
 		driver.findElement(By.id("ctl00_MainContent_fmwOrder_InsertButton")).click();
-		
-		String actual = driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder\"]/tbody/tr/td/div/strong")).getText();
-		String expexted ="New order has been successfully added.";
-		
-		if(actual.equals(expexted)) {
+
+		String actual = driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder\"]/tbody/tr/td/div/strong"))
+				.getText();
+		String expexted = "New order has been successfully added.";
+
+		if (actual.equals(expexted)) {
 			System.out.println("passed!");
-		}else {
+		} else {
 			System.out.println("failed!");
 		}
-//		if(driver.findElement(By.xpath("//*[contains(text(), 'New order has been successfully added')]")).isDisplayed()==true) {
-//			System.out.println("PASSED!");
-//		}else {
-//			System.out.println("FAILED!");
-//		}
-		
+
 		Thread.sleep(10000);
 		driver.close();
 	}
