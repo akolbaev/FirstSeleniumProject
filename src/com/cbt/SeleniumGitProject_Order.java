@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class SeleniumGitProject {
+public class SeleniumGitProject_Order {
 
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
@@ -87,9 +87,9 @@ public class SeleniumGitProject {
 		String expexted ="New order has been successfully added.";
 		
 		if(actual.equals(expexted)) {
-			System.out.println("passed");
+			System.out.println("passed!");
 		}else {
-			System.out.println("failed");
+			System.out.println("failed!");
 		}
 //		if(driver.findElement(By.xpath("//*[contains(text(), 'New order has been successfully added')]")).isDisplayed()==true) {
 //			System.out.println("PASSED!");
